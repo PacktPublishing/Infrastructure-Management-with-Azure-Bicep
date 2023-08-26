@@ -1,0 +1,15 @@
+# Code snippits for the deployment of the chapter 2 example
+
+#Login to Azure and set the subscription
+az login
+
+az account set --subscription "<your subscription id>" 
+
+#Create the resource group and deploy the template
+az group create --name rg-chapter4 --location westeurope
+
+#Deploy the template
+az group deployment create --resource-group rg-chapter4 --template-file main.bicep
+
+#Clean up
+az group delete --name rg-chapter4 --yes --no-wait
