@@ -47,7 +47,7 @@
     {
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2020-05-01",
-      "name": "[concat('vnet-', parameters('vnetName'), parameters('environment'), parameters('region'), '-001')]",
+      "name": "[concat('vnet-', parameters('vnetName'), '-', parameters('environment'),'-', parameters('region'), '-001')]",
       "location": "[parameters('region')]",
       "properties": {
         "addressSpace": {
@@ -76,5 +76,10 @@
       }
     }
   ],
-  "outputs": {}
+  "outputs": {
+    "storageAccountFQDN": {
+      "type": "string",
+      "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
+    }
+  }
 }
