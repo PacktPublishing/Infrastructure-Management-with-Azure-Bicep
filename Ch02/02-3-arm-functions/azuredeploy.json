@@ -1,0 +1,60 @@
+// Template for the Chapter 2 lab - Deploying a Virtual Network
+// Author - Kasun Rajapakse | kasunsjc@hotmail.com | kasunrajapakse.me
+
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "Virtual Network Name"
+            }
+        },
+        "environment": {
+            "type": "string",
+            "metadata": {
+                "description": "Environment Name"
+            }
+        },
+        "vnetAddressPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Virtual Network Address Prefix"
+            }
+        },
+        "region": {
+            "type": "string",
+            "metadata": {
+                "description": "Deployment region"
+            }
+        }       
+    },
+    "variables": {
+
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-05-01",
+            "name": "[concat('vnet-', parameters('vnetName'), parameters('environment'), parameters('region'), '-001')]",
+            "location": "[parameters('region')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('vnetAddressPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "default",
+                        "properties": {
+                            "addressPrefix": "[parameters('vnetAddressPrefix')]"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {}
+}

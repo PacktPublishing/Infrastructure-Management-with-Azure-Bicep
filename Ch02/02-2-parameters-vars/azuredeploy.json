@@ -1,3 +1,6 @@
+// Template for the Chapter 2 lab - Deploying a Storage Account
+// Author - Kasun Rajapakse | kasunsjc@hotmail.com | kasunrajapakse.me
+
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
