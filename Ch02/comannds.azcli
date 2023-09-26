@@ -1,0 +1,20 @@
+#Login to Azure CLI
+
+az login
+
+# Select the subscription you want to use
+
+az account set --subscription "SUBSCRIPTION_ID"
+
+# Create a resource group
+
+az group create --name "arm-template-rg" --location "westeurope"
+
+# Deploy the ARM template
+
+az deployment group create --resource-group "arm-template-rg" --template-file "azuredeploy.json" --parameters "azuredeploy.parameters.json" 
+
+# Delete the resource group
+
+az group delete --name "arm-template-rg" --yes --no-wait
+
