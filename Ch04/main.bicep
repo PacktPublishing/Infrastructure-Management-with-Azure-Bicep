@@ -18,7 +18,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-04-01' = {
   }
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: 'stazbicepch02'
+  name: 'stazbicepch02' // Storage account name must be unique across Azure
   location: 'westeurope'
   sku: {
     name: 'Standard_LRS'

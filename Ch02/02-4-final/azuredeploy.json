@@ -77,9 +77,9 @@
     }
   ],
   "outputs": {
-    "storageAccountFQDN": {
+    "storageAccountType": {
       "type": "string",
-      "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
+      "value": "[reference(parameters('storageAccountName')).accountType]"
     }
   }
 }
