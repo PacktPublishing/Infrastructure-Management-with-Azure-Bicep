@@ -1,3 +1,11 @@
+##############################
+#Code snippet for the chapter 4 of the book "Infrastructure Management with Azure Bicep"
+#by Kasun Rajapakse and Elkhan Yusubov
+######################################
+
+#TODO - Add the Azure CLI commands similler to Powershell for the deployment of the chapter 4 example
+
+
 # Code snippits for the deployment of the chapter 2 example
 
 #Login to Azure and set the subscription
