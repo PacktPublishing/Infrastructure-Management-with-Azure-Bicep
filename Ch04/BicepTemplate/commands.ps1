@@ -1,3 +1,10 @@
+# Login to Azure
+
+Login-AzAccount
+
+# Select Azure Subscription
+
+Set-AzContext -Subscription ''
 
 # Create resource group
 

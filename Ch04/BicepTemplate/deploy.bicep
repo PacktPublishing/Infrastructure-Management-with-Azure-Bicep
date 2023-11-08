@@ -65,7 +65,7 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
       {
         name: 'db1-subnet'
         properties: {
-          addressPrefix: '10.0.2.0/24'
+          addressPrefix: '10.10.2.0/24'
         }
       }
     ]
