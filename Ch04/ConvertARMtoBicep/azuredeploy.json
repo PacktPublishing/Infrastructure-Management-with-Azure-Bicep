@@ -1,0 +1,89 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "westeurope",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "innovateStart-appServicePlan",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2022-09-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "F1",
+                "capacity": 1
+            },
+            "tags": {
+                "displayName": "innovateStart-appServicePlan"
+            },
+            "properties": {
+                "name": "innovateStart-appServicePlan"
+            }
+        },
+        {
+            "name": "frontend-app-432425",
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2016-08-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/innovateStart-appServicePlan')]": "Resource",
+                "displayName": "frontend-app-432425"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', 'innovateStart-appServicePlan')]"
+            ],
+            "properties": {
+                "name": "frontend-app-432425",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'innovateStart-appServicePlan')]"
+            }
+        },
+        {
+            "name": "app1-vnet",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2018-08-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "displayName": "app-vnet"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.100.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "app-subnet",
+                        "properties": {
+                            "addressPrefix": "10.100.0.0/24"
+                        }
+                    },
+                    {
+                        "name": "db-subnet",
+                        "properties": {
+                            "addressPrefix": "10.100.1.0/24"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {
+        "frontend-app": {
+            "type": "object",
+            "value": "[reference(resourceId('Microsoft.Web/sites', 'frontend-app-432425'))]"
+        },
+        "app-vnet": {
+            "type": "object",
+            "value": "[reference(resourceId('Microsoft.Network/virtualNetworks', 'app1-vnet'))]"
+        }
+    }
+}
