@@ -12,16 +12,15 @@ resource appService 'Microsoft.Web/sites@2020-12-01' = {
   name: 'frontend-appservice-34543'
   location: 'westeurope'
   properties: {
-    serverFarmId: appServicePlan.id
-    virtualNetworkSubnetId: virtualNetwork.properties.subnets[0].id
-    siteConfig: {
-      appSettings: [
-        {
-          name: 'WEBSITE_NODE_DEFAULT_VERSION'
-          value: '14.17.0'
+  serverFarmId: appServicePlan.id
+  virtualNetworkSubnetId: virtualNetwork.properties.subnets[0].id
+  siteConfig: {
+    appSettings: [
+      {
+        name: 'WEBSITE_NODE_DEFAULT_VERSION'
+        value: '14.17.0'
         }
-      ]
-    }
+    ]    }
   }
 }
 
