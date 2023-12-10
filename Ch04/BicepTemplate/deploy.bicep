@@ -1,4 +1,3 @@
-
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-12-01' = {
   name: 'frontend-appserviceplan'
   location: 'westeurope'
@@ -12,15 +11,16 @@ resource appService 'Microsoft.Web/sites@2020-12-01' = {
   name: 'frontend-appservice-34543'
   location: 'westeurope'
   properties: {
-  serverFarmId: appServicePlan.id
-  virtualNetworkSubnetId: virtualNetwork.properties.subnets[0].id
-  siteConfig: {
-    appSettings: [
-      {
-        name: 'WEBSITE_NODE_DEFAULT_VERSION'
-        value: '14.17.0'
+    serverFarmId: appServicePlan.id
+    virtualNetworkSubnetId: virtualNetwork.properties.subnets[0].id
+    siteConfig: {
+      appSettings: [
+        {
+          name: 'WEBSITE_NODE_DEFAULT_VERSION'
+          value: '14.17.0'
         }
-    ]    }
+      ] 
+    }
   }
 }
 
@@ -32,7 +32,6 @@ resource appInsightsComponents 'Microsoft.Insights/components@2020-02-02' = {
     Application_Type: 'web'
   }
 }
-
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
   name: 'app1-vnet'
