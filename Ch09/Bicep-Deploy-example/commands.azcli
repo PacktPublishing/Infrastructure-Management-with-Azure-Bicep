@@ -1,0 +1,14 @@
+RESOURCE_GROUP_NAME=rg-book-ch09
+LOCATION=westeurope
+
+az login
+
+az account set --subscription "Azure subscription 1"
+
+az group create --name $RESOURCE_GROUP_NAME -l $LOCATION   
+
+# Create the Azure Resources with the Bicep file whatif will do preflight walidate the template effect
+az deployment group create --resource-group $RESOURCE_GROUP_NAME --template-file main.bicep --parameters main.bicepparam --what-if
+
+# Create the Azure Resources with the Bicep file
+az deployment group create --resource-group $RESOURCE_GROUP_NAME --template-file main.bicep --parameters main.bicepparam

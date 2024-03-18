@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "westeurope"
+        },
+        "adminUsername": {
+            "value": "adminUser"
+        },
+        "adminPassword": {
+            "value": "adminPassword123!"
+        },
+        "vmName": {
+            "value": "lob-app-01"
+        }
+    }
+}
