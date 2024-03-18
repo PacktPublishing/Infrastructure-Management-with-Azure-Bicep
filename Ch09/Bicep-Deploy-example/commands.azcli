@@ -1,5 +1,5 @@
 RESOURCE_GROUP_NAME=rg-book-ch09
-LOCATION=westeurope
+LOCATION=westus
 
 az login
 

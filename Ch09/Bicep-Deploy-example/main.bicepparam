@@ -1,6 +1,6 @@
 using './main.bicep'
 
-param resourceLocation = 'westeurope'
+param resourceLocation = 'westus'
 param environment = 'dev'
 param resourcePrefix = 'app1'
 param appServicePlanTier = 'Basic'

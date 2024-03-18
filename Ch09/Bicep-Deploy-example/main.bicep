@@ -68,5 +68,16 @@ module server 'br/public:avm/res/sql/server:0.2.0' = {
     administratorLogin: sqlAdminUserName
     administratorLoginPassword: sqlAdminPassword
     location: resourceLocation
+    databases: [
+      {
+        createMode: 'Default'
+        maxSizeBytes: 2147483648
+        name: 'app1'
+        skuName: 'Basic'
+        skuTier: 'Basic'
+      }
+    ]
   }
 }
+
+
